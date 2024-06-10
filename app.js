@@ -5,7 +5,12 @@ const DB = require('./db');
 const morgan=require("morgan");
 require('dotenv').config() 
 
-
+const corsOptions = {
+    origin: 'http://localhost:4200', 
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'], 
+    credentials: true, 
+  };
  
 
 const app = express() 
@@ -13,7 +18,7 @@ app.disable('x-powered-by');
 app.set('x-powered-by', false);
 
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 
 const ControllerMarcas=require('./Controllers/GestionMarca');
